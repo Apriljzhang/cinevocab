@@ -1582,7 +1582,8 @@ function getPosterSrc(v) {
 }
 
 function escapeJsString(s) {
-  return String(s || '').replaceAll('\\\\', '\\\\\\\\').replaceAll(\"'\", \"\\\\'\");
+  // Escapes for usage inside single-quoted HTML attributes (onerror="... 'x' ...")
+  return String(s || '').replaceAll('\\', '\\\\').replaceAll("'", "\\'");
 }
 
 function posterFallback(imgEl, title, subtitle) {
