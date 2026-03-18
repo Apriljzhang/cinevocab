@@ -1375,6 +1375,7 @@ const VOCAB_DATA = [
     quote: "In the palace, the one you trust most may betray you first.",
     movie: "Empresses in the Palace",
     movieZh: "甄嬛传",
+    imageUrl: "images/zhenhuan.jpg",
     year: 2011,
     note: "'Betray' means to be disloyal or to hurt someone who trusts you. Common patterns: betray a friend, betray one's country, betray trust. In writing, it often appears in stories and moral discussions."
   },
@@ -1387,6 +1388,7 @@ const VOCAB_DATA = [
     quote: "Every smile can hide a scheme.",
     movie: "Empresses in the Palace",
     movieZh: "甄嬛传",
+    imageUrl: "images/zhenhuan.jpg",
     year: 2011,
     note: "'Scheme' as a noun means a secret plan, often dishonest. As a verb: scheme to do something. Related: plot (n./v.), conspiracy (n.). Useful in narrative and argumentative essays."
   },
@@ -1399,6 +1401,7 @@ const VOCAB_DATA = [
     quote: "Revenge tastes sweet at first, but bitter in the end.",
     movie: "Nirvana in Fire",
     movieZh: "琅琊榜",
+    imageUrl: "images/langyabang.jpg",
     year: 2015,
     note: "'Revenge' means hurting someone in return for a wrong. Collocations: take revenge on, revenge for. For writing, contrast revenge vs. forgiveness."
   },
@@ -1411,6 +1414,7 @@ const VOCAB_DATA = [
     quote: "Justice may come late, but it will come.",
     movie: "The Untamed",
     movieZh: "陈情令",
+    imageUrl: "images/chenqingling.jpg",
     year: 2019,
     note: "'Justice' means fairness and the law doing what is right. Phrases: seek justice, bring to justice, social justice. Great for Gaokao themes about society and responsibility."
   },
@@ -1423,6 +1427,7 @@ const VOCAB_DATA = [
     quote: "Destiny is not written in the stars—it is written by our choices.",
     movie: "The Wandering Earth",
     movieZh: "流浪地球",
+    imageUrl: "images/liulangdiqiu.jpg",
     year: 2019,
     note: "'Destiny' is similar to 'fate' but often feels more personal. Collocations: shape one's destiny, destiny of a nation. This quote also reinforces the key word 'choice'."
   },
@@ -1435,6 +1440,7 @@ const VOCAB_DATA = [
     quote: "Sometimes we must sacrifice the small to save the many.",
     movie: "The Wandering Earth",
     movieZh: "流浪地球",
+    imageUrl: "images/liulangdiqiu.jpg",
     year: 2019,
     note: "'Sacrifice' means giving up something important for a greater purpose. Patterns: make a sacrifice, sacrifice A for B. Strong word for argumentative writing."
   },
@@ -1459,6 +1465,7 @@ const VOCAB_DATA = [
     quote: "When you lose your identity, you lose your way.",
     movie: "Infernal Affairs",
     movieZh: "无间道",
+    imageUrl: "images/wujiandao.jpg",
     year: 2002,
     note: "'Identity' means who someone is (or what makes something unique). Collocations: a sense of identity, identity card, cultural identity. Great for topics about self and society."
   },
@@ -1495,6 +1502,7 @@ const VOCAB_DATA = [
     quote: "You can defeat an opponent, but you must first defeat yourself.",
     movie: "Ip Man",
     movieZh: "叶问",
+    imageUrl: "images/yewen.jpg",
     year: 2008,
     note: "'Defeat' means to win against someone, or a loss (noun). Collocations: defeat the enemy, suffer defeat. Great for sports and perseverance topics."
   },
@@ -1507,6 +1515,7 @@ const VOCAB_DATA = [
     quote: "With power comes responsibility—for your people and your future.",
     movie: "Wolf Warrior 2",
     movieZh: "战狼2",
+    imageUrl: "images/zhanlang2.jpg",
     year: 2017,
     note: "'Responsibility' is a key Gaokao word. Patterns: take responsibility for, be responsible for. Also links nicely to the earlier quote about power."
   }
@@ -1570,6 +1579,17 @@ function getWorkTitleLine(v) {
 function getPosterSrc(v) {
   if (v.imageUrl) return v.imageUrl;
   return posterDataUrl(v.movie, v.movieZh);
+}
+
+function escapeJsString(s) {
+  return String(s || '').replaceAll('\\\\', '\\\\\\\\').replaceAll(\"'\", \"\\\\'\");
+}
+
+function posterFallback(imgEl, title, subtitle) {
+  try {
+    imgEl.onerror = null;
+    imgEl.src = posterDataUrl(title, subtitle);
+  } catch {}
 }
 
 // ===== STATE =====
@@ -1654,7 +1674,7 @@ function renderCards() {
     <div class="vocab-card ${mastered.has(v.word) ? 'mastered' : ''} ${expandedCards.has(v.word) ? 'expanded' : ''}" data-word="${v.word}">
       <div class="card-header">
         <div class="work-poster">
-          <img src="${getPosterSrc(v)}" alt="${escapeHtml(v.movie)}">
+          <img src="${getPosterSrc(v)}" alt="${escapeHtml(v.movie)}" onerror="posterFallback(this, '${escapeJsString(v.movie)}', '${escapeJsString(v.movieZh || '')}')">
         </div>
         <div class="word-group">
           <span class="word">${v.word}</span>
@@ -1722,7 +1742,7 @@ function renderFlashcard() {
   const v = data[fcIndex % data.length];
 
   document.getElementById('flashcardFront').innerHTML = `
-    <div class="flashcard-poster"><img src="${getPosterSrc(v)}" alt="${escapeHtml(v.movie)}"></div>
+    <div class="flashcard-poster"><img src="${getPosterSrc(v)}" alt="${escapeHtml(v.movie)}" onerror="posterFallback(this, '${escapeJsString(v.movie)}', '${escapeJsString(v.movieZh || '')}')"></div>
     <div class="flashcard-word">${v.word}</div>
     <div class="flashcard-phonetic">${v.phonetic}</div>
     <div class="flashcard-pos">${v.pos}</div>
