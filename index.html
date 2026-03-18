@@ -318,6 +318,25 @@
     justify-content: space-between;
     align-items: flex-start;
     margin-bottom: 16px;
+    gap: 16px;
+  }
+
+  .work-poster {
+    width: 84px;
+    height: 112px; /* consistent size */
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+    flex: 0 0 auto;
+    background: linear-gradient(135deg, rgba(108,99,255,0.12), rgba(212,168,83,0.10));
+    box-shadow: 0 10px 26px rgba(0,0,0,0.25);
+  }
+
+  .work-poster img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
   }
 
   .word-group { flex: 1; }
@@ -417,6 +436,12 @@
   .quote-source .movie-name {
     color: var(--accent-light);
     font-weight: 500;
+  }
+
+  .quote-source .movie-name-zh {
+    color: var(--text-secondary);
+    margin-left: 6px;
+    font-weight: 400;
   }
 
   /* Context/usage note */
@@ -632,6 +657,23 @@
     font-weight: 800;
     color: var(--gold);
     margin-bottom: 8px;
+  }
+
+  .flashcard-poster {
+    width: 96px;
+    height: 128px;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+    margin-bottom: 18px;
+    background: linear-gradient(135deg, rgba(108,99,255,0.12), rgba(212,168,83,0.10));
+  }
+
+  .flashcard-poster img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
   }
 
   .flashcard-phonetic {
@@ -856,6 +898,7 @@ const VOCAB_DATA = [
     category: "Character",
     quote: "Courage is not the absence of fear, but rather the judgment that something else is more important than fear.",
     movie: "The Princess Diaries",
+    movieZh: "公主日记",
     year: 2001,
     note: "'Courage' means bravery in the face of difficulty. It comes from the Latin 'cor' meaning heart. In the Gaokao, it often appears in reading passages about heroes and personal growth."
   },
@@ -867,6 +910,7 @@ const VOCAB_DATA = [
     category: "Values",
     quote: "They may take our lives, but they'll never take our freedom!",
     movie: "Braveheart",
+    movieZh: "勇敢的心",
     year: 1995,
     note: "'Freedom' is a core value word. Notice how 'may...but never' creates a strong contrast structure, common in persuasive writing. Collocations: fight for freedom, freedom of speech."
   },
@@ -889,6 +933,7 @@ const VOCAB_DATA = [
     category: "Power",
     quote: "May the Force be with you.",
     movie: "Star Wars",
+    movieZh: "星球大战",
     year: 1977,
     note: "'Force' has two main meanings: a power/energy (noun) or to compel someone (verb). 'May...be with you' is a blessing structure. Key phrases: by force, air force, force someone to do something."
   },
@@ -911,6 +956,7 @@ const VOCAB_DATA = [
     category: "Emotion",
     quote: "Hope is a good thing, maybe the best of things, and no good thing ever dies.",
     movie: "The Shawshank Redemption",
+    movieZh: "肖申克的救赎",
     year: 1994,
     note: "'Hope' can be both noun and verb. 'The best of things' is a superlative structure. This quote uses parallel structure for emphasis. Collocations: hope for the best, in the hope of, hopeful/hopeless."
   },
@@ -1010,6 +1056,7 @@ const VOCAB_DATA = [
     category: "Character",
     quote: "The flower that blooms in adversity is the most rare and beautiful of all.",
     movie: "Mulan",
+    movieZh: "花木兰",
     year: 1998,
     note: "'Adversity' means difficult or unfortunate circumstances. This is a metaphor: Mulan is compared to a flower that grows through hardship. 'Bloom in adversity' = succeed despite difficulties. This word often appears in Gaokao composition topics."
   },
@@ -1021,6 +1068,7 @@ const VOCAB_DATA = [
     category: "Time",
     quote: "Oh yes, the past can hurt. But the way I see it, you can either run from it or learn from it.",
     movie: "The Lion King",
+    movieZh: "狮子王",
     year: 1994,
     note: "'The past' as a noun refers to the time before now. This quote uses the 'either...or...' structure — a key conjunction pattern. 'The way I see it' means 'in my opinion'. Very useful phrases for writing and speaking."
   },
@@ -1043,6 +1091,7 @@ const VOCAB_DATA = [
     category: "Emotion",
     quote: "Happiness can be found even in the darkest of times, if one only remembers to turn on the light.",
     movie: "Harry Potter and the Prisoner of Azkaban",
+    movieZh: "哈利·波特与阿兹卡班的囚徒",
     year: 2004,
     note: "'Happiness' = happy + ness (suffix making adjective into noun). 'Even in the darkest of times' uses superlative for emphasis. The metaphor of light vs. dark represents hope vs. despair — a powerful image for essay writing."
   },
@@ -1087,6 +1136,7 @@ const VOCAB_DATA = [
     category: "Action",
     quote: "You complete me.",
     movie: "Jerry Maguire",
+    movieZh: "甜心先生",
     year: 1996,
     note: "'Complete' as a verb means to finish or make whole. As an adjective, it means having all parts. Here it means 'you make me feel whole.' Related: completely (adv.), completion (n.), incomplete (adj.)."
   },
@@ -1120,6 +1170,7 @@ const VOCAB_DATA = [
     category: "Values",
     quote: "Some people are worth melting for.",
     movie: "Frozen",
+    movieZh: "冰雪奇缘",
     year: 2013,
     note: "'Worth' + doing/noun means deserving of. 'Worth melting for' is a metaphor from Olaf the snowman. Phrases: be worth doing, net worth, self-worth. 'It is worth noting that...' is useful in academic writing."
   },
@@ -1164,6 +1215,7 @@ const VOCAB_DATA = [
     category: "Action",
     quote: "I never look back, darling. It distracts from the now.",
     movie: "The Incredibles",
+    movieZh: "超人总动员",
     year: 2004,
     note: "'Distract' means to divert attention. Related: distraction (n.), distracting (adj.). 'Distract from' means to take attention away from. 'The now' is creative — using an adverb as a noun meaning 'the present moment'."
   },
@@ -1274,6 +1326,7 @@ const VOCAB_DATA = [
     category: "Character",
     quote: "It always seems impossible until it's done.",
     movie: "Invictus (quoting Nelson Mandela)",
+    movieZh: "成事在人 / 因为胜利",
     year: 2009,
     note: "This quote embodies determination. 'Determination' means firm resolve. Related: determine (v.), determined (adj.). 'It seems...until...' shows how perception changes. This is a 4-syllable word — practice the stress: de-ter-mi-NA-tion."
   },
@@ -1307,10 +1360,217 @@ const VOCAB_DATA = [
     category: "Values",
     quote: "Respect is the key determinant of high-performance leadership.",
     movie: "The Intern (paraphrased)",
+    movieZh: "实习生（意译）",
     year: 2015,
     note: "'Respect' means to admire deeply. As a noun: earn/show/lose respect. 'In respect of' = regarding. 'With respect to' = concerning. These formal phrases are useful in academic essays and Gaokao writing tasks."
+  },
+
+  /* ===== China-familiar films / TV (English translated lines) ===== */
+  {
+    word: "betray",
+    phonetic: "/bɪˈtreɪ/",
+    pos: "verb",
+    cn: "背叛；出卖",
+    category: "Values",
+    quote: "In the palace, the one you trust most may betray you first.",
+    movie: "Empresses in the Palace",
+    movieZh: "甄嬛传",
+    year: 2011,
+    note: "'Betray' means to be disloyal or to hurt someone who trusts you. Common patterns: betray a friend, betray one's country, betray trust. In writing, it often appears in stories and moral discussions."
+  },
+  {
+    word: "scheme",
+    phonetic: "/skiːm/",
+    pos: "noun / verb",
+    cn: "阴谋；密谋",
+    category: "Power",
+    quote: "Every smile can hide a scheme.",
+    movie: "Empresses in the Palace",
+    movieZh: "甄嬛传",
+    year: 2011,
+    note: "'Scheme' as a noun means a secret plan, often dishonest. As a verb: scheme to do something. Related: plot (n./v.), conspiracy (n.). Useful in narrative and argumentative essays."
+  },
+  {
+    word: "revenge",
+    phonetic: "/rɪˈvendʒ/",
+    pos: "noun",
+    cn: "复仇",
+    category: "Emotion",
+    quote: "Revenge tastes sweet at first, but bitter in the end.",
+    movie: "Nirvana in Fire",
+    movieZh: "琅琊榜",
+    year: 2015,
+    note: "'Revenge' means hurting someone in return for a wrong. Collocations: take revenge on, revenge for. For writing, contrast revenge vs. forgiveness."
+  },
+  {
+    word: "justice",
+    phonetic: "/ˈdʒʌstɪs/",
+    pos: "noun",
+    cn: "正义；公正",
+    category: "Values",
+    quote: "Justice may come late, but it will come.",
+    movie: "The Untamed",
+    movieZh: "陈情令",
+    year: 2019,
+    note: "'Justice' means fairness and the law doing what is right. Phrases: seek justice, bring to justice, social justice. Great for Gaokao themes about society and responsibility."
+  },
+  {
+    word: "destiny",
+    phonetic: "/ˈdestɪni/",
+    pos: "noun",
+    cn: "命运",
+    category: "Values",
+    quote: "Destiny is not written in the stars—it is written by our choices.",
+    movie: "The Wandering Earth",
+    movieZh: "流浪地球",
+    year: 2019,
+    note: "'Destiny' is similar to 'fate' but often feels more personal. Collocations: shape one's destiny, destiny of a nation. This quote also reinforces the key word 'choice'."
+  },
+  {
+    word: "sacrifice",
+    phonetic: "/ˈsækrɪfaɪs/",
+    pos: "noun / verb",
+    cn: "牺牲",
+    category: "Character",
+    quote: "Sometimes we must sacrifice the small to save the many.",
+    movie: "The Wandering Earth",
+    movieZh: "流浪地球",
+    year: 2019,
+    note: "'Sacrifice' means giving up something important for a greater purpose. Patterns: make a sacrifice, sacrifice A for B. Strong word for argumentative writing."
+  },
+  {
+    word: "legend",
+    phonetic: "/ˈledʒənd/",
+    pos: "noun",
+    cn: "传奇；传说",
+    category: "Description",
+    quote: "A hero becomes a legend when the story is passed on.",
+    movie: "Journey to the West",
+    movieZh: "西游记",
+    year: 1986,
+    note: "'Legend' is a traditional story. Related: legendary (adj.). Use in culture topics: 'a legend in Chinese literature'."
+  },
+  {
+    word: "identity",
+    phonetic: "/aɪˈdentəti/",
+    pos: "noun",
+    cn: "身份；特征",
+    category: "Values",
+    quote: "When you lose your identity, you lose your way.",
+    movie: "Infernal Affairs",
+    movieZh: "无间道",
+    year: 2002,
+    note: "'Identity' means who someone is (or what makes something unique). Collocations: a sense of identity, identity card, cultural identity. Great for topics about self and society."
+  },
+  {
+    word: "loyal",
+    phonetic: "/ˈlɔɪəl/",
+    pos: "adjective",
+    cn: "忠诚的",
+    category: "Character",
+    quote: "Stay loyal to your heart, even when the world doubts you.",
+    movie: "The Grandmaster",
+    movieZh: "一代宗师",
+    year: 2013,
+    note: "'Loyal' means faithful and supportive. Patterns: loyal to someone/something. Noun: loyalty. Use in writing about friendship, family, and values."
+  },
+  {
+    word: "regret",
+    phonetic: "/rɪˈɡret/",
+    pos: "noun / verb",
+    cn: "遗憾；后悔",
+    category: "Emotion",
+    quote: "Regret is the price we pay for what we did not dare to do.",
+    movie: "Farewell My Concubine",
+    movieZh: "霸王别姬",
+    year: 1993,
+    note: "'Regret' can be a verb (regret doing) or a noun (feel regret). Useful in reflective writing: 'I regret that...' 'With no regret'."
+  },
+  {
+    word: "defeat",
+    phonetic: "/dɪˈfiːt/",
+    pos: "verb / noun",
+    cn: "击败；失败",
+    category: "Character",
+    quote: "You can defeat an opponent, but you must first defeat yourself.",
+    movie: "Ip Man",
+    movieZh: "叶问",
+    year: 2008,
+    note: "'Defeat' means to win against someone, or a loss (noun). Collocations: defeat the enemy, suffer defeat. Great for sports and perseverance topics."
+  },
+  {
+    word: "responsibility",
+    phonetic: "/rɪˌspɒnsəˈbɪləti/",
+    pos: "noun",
+    cn: "责任",
+    category: "Values",
+    quote: "With power comes responsibility—for your people and your future.",
+    movie: "Wolf Warrior 2",
+    movieZh: "战狼2",
+    year: 2017,
+    note: "'Responsibility' is a key Gaokao word. Patterns: take responsibility for, be responsible for. Also links nicely to the earlier quote about power."
   }
 ];
+
+// ===== Posters (generated, same size, GitHub-pages friendly) =====
+function escapeHtml(s) {
+  return String(s || '')
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('\"', '&quot;')
+    .replaceAll("'", '&#39;');
+}
+
+function posterDataUrl(title, subtitle) {
+  const t = escapeHtml(title || 'CineVocab');
+  const st = escapeHtml(subtitle || '');
+  const svg = `<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="420" height="560" viewBox="0 0 420 560">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#6c63ff" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#d4a853" stop-opacity="0.28"/>
+    </linearGradient>
+    <radialGradient id="r" cx="25%" cy="20%" r="80%">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.14"/>
+      <stop offset="1" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="noise" x="-20%" y="-20%" width="140%" height="140%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/>
+      <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 0.12 0"/>
+    </filter>
+  </defs>
+  <rect width="420" height="560" rx="34" fill="#14141f"/>
+  <rect width="420" height="560" rx="34" fill="url(#g)"/>
+  <rect width="420" height="560" rx="34" fill="url(#r)"/>
+  <rect width="420" height="560" rx="34" filter="url(#noise)" opacity="0.35"/>
+  <g fill="#f0f0f5" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Arial" text-anchor="middle">
+    <text x="210" y="120" font-size="20" opacity="0.9">CineVocab</text>
+    <text x="210" y="250" font-size="34" font-weight="800">${t}</text>
+    ${st ? `<text x="210" y="298" font-size="22" opacity="0.85">${st}</text>` : ''}
+    <text x="210" y="430" font-size="16" opacity="0.65">Vocabulary · Quotes · Practice</text>
+  </g>
+  <g fill="#d4a853" opacity="0.85">
+    <circle cx="64" cy="76" r="6"/>
+    <circle cx="356" cy="100" r="4"/>
+    <circle cx="342" cy="470" r="5"/>
+    <circle cx="78" cy="488" r="4"/>
+  </g>
+</svg>`;
+
+  return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+}
+
+function getWorkTitleLine(v) {
+  const zh = v.movieZh ? ` <span class="movie-name-zh">(${escapeHtml(v.movieZh)})</span>` : '';
+  return `<span class="movie-name">${escapeHtml(v.movie)}</span>${zh}`;
+}
+
+function getPosterSrc(v) {
+  if (v.imageUrl) return v.imageUrl;
+  return posterDataUrl(v.movie, v.movieZh);
+}
 
 // ===== STATE =====
 let currentMode = 'browse';
@@ -1393,6 +1653,9 @@ function renderCards() {
   grid.innerHTML = data.map(v => `
     <div class="vocab-card ${mastered.has(v.word) ? 'mastered' : ''} ${expandedCards.has(v.word) ? 'expanded' : ''}" data-word="${v.word}">
       <div class="card-header">
+        <div class="work-poster">
+          <img src="${getPosterSrc(v)}" alt="${escapeHtml(v.movie)}">
+        </div>
         <div class="word-group">
           <span class="word">${v.word}</span>
           <button class="speak-btn" onclick="event.stopPropagation(); speak('${v.word}')" title="Pronounce">🔊</button>
@@ -1409,7 +1672,7 @@ function renderCards() {
       </div>
       <div class="quote-section">
         <div class="quote-text">"${highlightWord(v.quote, v.word)}"</div>
-        <div class="quote-source">— <span class="movie-name">${v.movie}</span> (${v.year})</div>
+        <div class="quote-source">— ${getWorkTitleLine(v)} (${v.year})</div>
       </div>
       <div class="usage-note">💡 ${v.note}</div>
       <div class="expand-hint">Click to see learning notes</div>
@@ -1459,6 +1722,7 @@ function renderFlashcard() {
   const v = data[fcIndex % data.length];
 
   document.getElementById('flashcardFront').innerHTML = `
+    <div class="flashcard-poster"><img src="${getPosterSrc(v)}" alt="${escapeHtml(v.movie)}"></div>
     <div class="flashcard-word">${v.word}</div>
     <div class="flashcard-phonetic">${v.phonetic}</div>
     <div class="flashcard-pos">${v.pos}</div>
@@ -1468,7 +1732,7 @@ function renderFlashcard() {
 
   document.getElementById('flashcardBack').innerHTML = `
     <div class="quote-text">"${highlightWord(v.quote, v.word)}"</div>
-    <div class="quote-source">— <span class="movie-name">${v.movie}</span> (${v.year})</div>
+    <div class="quote-source">— ${getWorkTitleLine(v)} (${v.year})</div>
     <div class="usage-note">💡 ${v.note}</div>
   `;
 
